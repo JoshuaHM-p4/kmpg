@@ -83,3 +83,9 @@ This solution directly addresses a ubiquitous, high-stress student problem by tr
 *   **Trigger:** User asks, "Create a study plan for my Economics final next week."
 *   **Flow:** Copilot accesses the previously uploaded syllabus to identify the key concepts covered. It generates a 5-day study plan, dedicating specific days to specific macro/micro concepts, and schedules these blocks into the user's free time.
 *   **Result:** A customized, structured review schedule is actively deployed to the student's calendar.
+
+### 6. Direct Task Entry
+*   **Who:** A student with a new, one-off deadline.
+*   **Trigger:** User says, "I have an exam on Tuesday" or "Remind me about [Task]."
+*   **Flow:** Copilot uses built-in Entity Extraction to automatically identify the date and task name. It skips multi-step reasoning and immediately triggers Lawrence's `ChildFlow_CreateEvent` to write the event straight to the Outlook calendar.
+*   **Result:** "Noted! I've added your exam on Tuesday to your calendar."

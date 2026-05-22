@@ -72,6 +72,16 @@
 | **Joshua** (Workflow Lead) | `Topic: Proactive Conflict` | Copilot Studio | Recognizes manual schedule changes (e.g., "I have to work Tuesday") and triggers Lawrence's backend flow to find alternative slots for displaced study blocks. |
 | **Joshua** (Workflow Lead) | `Topic: Task Re-evaluation` | Copilot Studio | Engages the user when a task is marked complete early, offering to either take a break or pull a future task forward. |
 | **Joshua** (Workflow Lead) | `Topic: Course Material Bridge` | Copilot Studio | Generates a multi-day study plan dedicated to specific syllabus concepts (e.g., macro/micro economics) and schedules the blocks. |
+| **Joshua** (Workflow Lead) | `Topic: Direct Task Entry` | Copilot Studio | Baseline topic for straightforward commands (e.g., "I have an exam on [Day]"). Uses built-in Entity Extraction (Date, TaskName) and triggers `ChildFlow_CreateEvent` for immediate Outlook calendar entry. |
 | **Farhana** (UI/UX & QA) | `App Flow: Document Upload` | Power Apps | The mobile-friendly frontend interface where the student uploads their PDF syllabi. |
 | **Farhana** (UI/UX & QA) | `App Flow: Review & Feedback` | Power Apps | The dashboard or chat interface where the student reviews Copilot's proposed schedules and provides confirmation. |
 | **Farhana** (UI/UX & QA) | `Data Masking Implementation` | Power Apps / Automate | Secures input/output in steps handling student names or calendar details to ensure PII is hidden in execution logs. |
+
+### Detailed Topic: Direct Task Entry
+
+A baseline topic to handle everyday, straightforward commands without requiring heavy generative AI reasoning.
+
+- **Trigger Phrases:** "I have an exam on [Day]", "Remind me about [Task]", "Add [Event] to my schedule."
+- **Entity Extraction:** Uses Copilot Studio's built-in Entity Extraction to automatically grab entities (e.g., "Tuesday" -> `Date` variable, "exam" -> `TaskName` variable).
+- **The Action:** Skips complex availability checks and immediately triggers `ChildFlow_CreateEvent` to write directly to the Outlook calendar.
+- **The Response:** "Noted! I've added your [TaskName] on [Date] to your calendar."
